@@ -1,4 +1,6 @@
 .DS_Store
 *.pyc
 .idea/
-
+.gui/node_modules/
+.gui/media/
+.gui/build/

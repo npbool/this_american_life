@@ -40,7 +40,7 @@ class Paragraph(object):
     def __init__(self, type, speaker, lines):
         self.type = type
         self.speaker = speaker
-        self.lines = []
+        self.lines = lines
 
     def tojson(self):
         return self.__dict__
@@ -76,14 +76,12 @@ def parse_transcipt(doc):
                     speaker = paragraph_tag.h4.string
                 else:
                     speaker = ''
-
                 lines=[
                     {'begin': line_tag['begin'],
                      'text': line_tag.string if line_tag is not None else ''
                      }
                     for line_tag in paragraph_tag.find_all('p')
                 ]
-
                 act.para.append(Paragraph(type=type, speaker=speaker, lines = lines))
         except Exception as e:
             print(e)
